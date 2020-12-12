@@ -1,16 +1,26 @@
 import Vue from 'vue'
 import App from './App'
 
-function vueRender() {
-    return new Vue({
-        render: function (h) { return h(App) },
-    }).$mount('#app')
-}
-
 let app = null
 
-export default function render() {
+export default function render({ loading }) {
     if (!app) {
-        app = vueRender()
+        app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    loading,
+                }
+            },
+            render(h) {
+                return h(App, {
+                    props: {
+                        loading: this.loading
+                    }
+                })
+            }
+        });
+    } else {
+        app.loading = loading
     }
 }

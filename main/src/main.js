@@ -4,9 +4,9 @@ import render from './micro'
 /**
  * Step1 初始化应用（可选）
  */
-render()
+render({ loading: true })
 
-const loader = () => render()
+const loader = (loading) => render({ loading })
 
 /**
  * Step2 注册子应用
