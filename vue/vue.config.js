@@ -10,7 +10,7 @@ module.exports = {
         }
     },
     devServer: {
-        port: 7101,
+        port: 8001,
         headers: {
             'Access-Control-Allow-Origin': '*'
         }

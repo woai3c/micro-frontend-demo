@@ -1,5 +1,30 @@
+import Vue from 'vue'
+import App from './App'
 import { registerMicroApps, runAfterFirstMounted, setDefaultMountApp, start, initGlobalState } from 'qiankun'
-import render from './micro'
+
+let app = null
+
+function render({ loading }) {
+    if (!app) {
+        app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    loading,
+                }
+            },
+            render(h) {
+                return h(App, {
+                    props: {
+                        loading: this.loading
+                    }
+                })
+            }
+        });
+    } else {
+        app.loading = loading
+    }
+}
 
 /**
  * Step1 初始化应用（可选）
@@ -15,20 +40,21 @@ const loader = (loading) => render({ loading })
 registerMicroApps(
     [
         {
-            name: 'vue',
-            entry: '//localhost:7101',
+            name: 'vue', // 子应用名称
+            entry: '//localhost:8001', // 子应用入口地址
             container: '#subapp-viewport',
             loader,
-            activeRule: '/vue',
+            activeRule: '/vue', // 子应用触发路由
         },
         {
             name: 'react',
-            entry: '//localhost:7102',
+            entry: '//localhost:8002',
             container: '#subapp-viewport',
             loader,
             activeRule: '/react',
         },
     ],
+    // 子应用生命周期事件
     {
         beforeLoad: [
             app => {
@@ -48,12 +74,15 @@ registerMicroApps(
     },
 )
 
+// 定义全局状态，可以在主应用、子应用中使用
 const { onGlobalStateChange, setGlobalState } = initGlobalState({
     user: 'qiankun',
 })
 
+// 监听全局状态变化
 onGlobalStateChange((value, prev) => console.log('[onGlobalStateChange - master]:', value, prev))
 
+// 设置全局状态
 setGlobalState({
     ignore: 'master',
     user: {

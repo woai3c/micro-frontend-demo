@@ -1,4 +1,3 @@
-import './public-path'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
@@ -13,6 +12,7 @@ let instance = null
 function render(props = {}) {
     const { container } = props
     router = new VueRouter({
+        // hash 模式不需要下面两行
         base: window.__POWERED_BY_QIANKUN__ ? '/vue' : '/',
         mode: 'history',
         routes,
@@ -25,7 +25,10 @@ function render(props = {}) {
     }).$mount(container ? container.querySelector('#app') : '#app')
 }
 
-if (!window.__POWERED_BY_QIANKUN__) {
+if (window.__POWERED_BY_QIANKUN__) {
+    // eslint-disable-next-line no-undef
+    __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
+} else {
     render()
 }
 
