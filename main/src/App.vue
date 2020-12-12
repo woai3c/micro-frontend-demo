@@ -11,7 +11,7 @@
                 <li @click="push('/react')">React</li>
             </ul>
             <!-- 子应用  -->
-            <main id="subapp-container">
+            <main class="subapp-container">
                 <h4 v-if="loading" class="subapp-loading">Loading...</h4>
                 <div id="subapp-viewport"></div>
             </main>
@@ -78,7 +78,7 @@ body {
     margin-top: 5px;
 }
 /* 子应用区域 */
-#subapp-container {
+.subapp-container {
   flex-grow: 1;
   position: relative;
   margin: 0 40px;
