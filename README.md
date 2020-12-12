@@ -15,8 +15,8 @@ npm i
 ```
 npm run dev
 ```
-然后打开网页，访问主应用 `http://localhost:7099/`。
+然后打开网页，访问主应用 `http://localhost:8000/`。
 
 子应用也可单独访问：
-* Vue 子应用：`http://localhost:7101/`
-* React 子应用：`http://localhost:7102/`
+* Vue 子应用：`http://localhost:8001/`
+* React 子应用：`http://localhost:8002/`
