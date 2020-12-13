@@ -1,0 +1,23 @@
+{
+  "name": "micro-frontend-demo",
+  "version": "1.0.0",
+  "description": "本 DEMO 使用的是微前端框架 [qiankun](https://qiankun.umijs.org/zh/guide)。包含了三个应用：\r * main：主应用，使用 vue-cli 创建。\r * vue：子应用，使用 vue-cli 创建。\r * react: 子应用，使用的 react 16 版本。",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/woai3c/micro-frontend-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/woai3c/micro-frontend-demo/issues"
+  },
+  "homepage": "https://github.com/woai3c/micro-frontend-demo#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
