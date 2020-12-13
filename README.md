@@ -10,7 +10,7 @@
 ```
 npm i
 ```
-## 使用
+## 开发
 在三个目录下分别执行
 ```
 npm run dev
@@ -18,5 +18,18 @@ npm run dev
 然后打开网页，访问主应用 `http://localhost:8000/`。
 
 子应用也可单独访问：
+* Vue 子应用：`http://localhost:8001/`
+* React 子应用：`http://localhost:8002/`
+## 部署
+将三个应用打包后的文件复制到 `main-static`、`vue-static`、`react-static` 目录，然后运行三条命令：
+* `node main-server.js`
+* `node vue-server.js`
+* `node react-server.js`
+
+即可开始访问页面。
+
+访问主应用 `http://localhost:8000/`。
+
+访问子应用：
 * Vue 子应用：`http://localhost:8001/`
 * React 子应用：`http://localhost:8002/`
